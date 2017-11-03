@@ -72,6 +72,14 @@ extension ViewController: CollectionCellDelegate {
         Networking.instance.downloadFile(withUrl: collection.zipped_images_url) { url in
             let file_exists = FileManager.default.fileExists(atPath: "\(url.absoluteString)/lion/3.jpeg")
             print(file_exists)
+            
+            let file_ulr = try? FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("\(collection.collection_name.lowercased())/_preview.png")
+            
+            DispatchQueue.main.async {
+                guard let image_url = file_ulr?.path else {return}
+                sender.collectionImageView.image = UIImage(contentsOfFile: image_url)
+            }
+            
         }
         
     }

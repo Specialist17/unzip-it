@@ -17,6 +17,8 @@ class CollectionCell: UITableViewCell {
     var collection: Collection!
     @IBOutlet weak var collectionNameLabel: UILabel!
     @IBOutlet weak var collectionImageDownloadButton: UIButton!
+    @IBOutlet weak var collectionImageView: CustomImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
