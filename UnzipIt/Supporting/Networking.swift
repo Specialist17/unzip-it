@@ -35,7 +35,7 @@ class Networking {
     }
     
     
-    func downloadFile(withUrl urlString: String, completion: @escaping (URL) -> Void){
+    func downloadFile(withUrl urlString: String, completion: @escaping (URL, Double) -> Void){
         //Create URL to the source file you want to download
         let fileURL = URL(string: urlString)!
         
@@ -49,7 +49,7 @@ class Networking {
                 let documentsDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
                 Zip.addCustomFileExtension("tmp")
                 try? Zip.unzipFile(tempLocalUrl, destination: documentsDirectory, overwrite: true, password: nil, progress: { (progress) in
-                    completion(fileURL)
+                    completion(fileURL, progress)
                 })
             } else {
                 print("Error took place while downloading a file. Error description: %@", error?.localizedDescription);

@@ -19,6 +19,7 @@ class CollectionCell: UITableViewCell {
     @IBOutlet weak var collectionImageDownloadButton: UIButton!
     @IBOutlet weak var collectionImageView: CustomImageView!
     
+    @IBOutlet weak var imageProgress: UIProgressView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

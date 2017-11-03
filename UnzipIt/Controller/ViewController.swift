@@ -86,7 +86,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension ViewController: CollectionCellDelegate {
     func loadImages(_ collection: Collection, _ sender: CollectionCell) {
-        Networking.instance.downloadFile(withUrl: collection.zipped_images_url) { url in
+        Networking.instance.downloadFile(withUrl: collection.zipped_images_url) { (url, progress) in
             
             let url_string = url.lastPathComponent
 
@@ -98,6 +98,7 @@ extension ViewController: CollectionCellDelegate {
             DispatchQueue.main.async {
                 guard let image_url = file_url?.path else {return}
                 sender.collectionImageView.image = UIImage(contentsOfFile: image_url)
+                sender.imageProgress.progress = Float(progress)
             }
             
         }
