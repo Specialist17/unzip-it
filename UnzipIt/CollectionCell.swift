@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CollectionCellDelegate: class {
-    func loadImages(_ collection: Collection, _ sender: CollectionCell)
+    func loadImages(_ collection_image: Collection, _ sender: CollectionCell)
 }
 
 class CollectionCell: UITableViewCell {

@@ -24,7 +24,6 @@ class Networking {
         var request = URLRequest(url: url)
         request.allHTTPHeaderFields = headers
         request.httpMethod = method
-//        request.httpBody = route.body(data: data)
         
         session.dataTask(with: request) { (data, response, error) in
             guard let data = data else {
@@ -50,16 +49,20 @@ class Networking {
             if let tempLocalUrl = tempLocalUrl, error == nil {
                 let documentsDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
                 Zip.addCustomFileExtension("tmp")
-                try? Zip.unzipFile(tempLocalUrl, destination: documentsDirectory, overwrite: true, password: nil, progress: { (progress) -> () in
+                try? Zip.unzipFile(tempLocalUrl, destination: documentsDirectory, overwrite: true, password: nil, progress: { (progress) in
                     print(progress)
-                }) // Unzip
-                completion(documentsDirectory)
+                }, fileOutputHandler: { (fileUrl) in
+                    if let url = fileURL {
+                        completion(url)
+                    }
+                    
+                })
             } else {
                 print("Error took place while downloading a file. Error description: %@", error?.localizedDescription);
             }
         }
         task.resume()
-    }
+    } 
     
     func alamofireLoad(collection: Collection){
         let destination: DownloadRequest.DownloadFileDestination = { _, _ in

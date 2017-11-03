@@ -70,10 +70,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 extension ViewController: CollectionCellDelegate {
     func loadImages(_ collection: Collection, _ sender: CollectionCell) {
         Networking.instance.downloadFile(withUrl: collection.zipped_images_url) { url in
-            let file_exists = FileManager.default.fileExists(atPath: "\(url.absoluteString)/lion/3.jpeg")
-            print(file_exists)
             
-            let file_ulr = try? FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("\(collection.collection_name.lowercased())/_preview.png")
+            let url_string = url.absoluteString
+            
+            let indexStartOfText = url_string.index(url_string.startIndex, offsetBy: 40) // 3
+            let indexEndOfText = url_string.index(url_string.endIndex, offsetBy: -4)
+            let collectionName = url_string[indexStartOfText..<indexEndOfText]
+            
+            let file_ulr = try? FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("\(collectionName)/_preview.png")
             
             DispatchQueue.main.async {
                 guard let image_url = file_ulr?.path else {return}
