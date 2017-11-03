@@ -71,16 +71,15 @@ extension ViewController: CollectionCellDelegate {
     func loadImages(_ collection: Collection, _ sender: CollectionCell) {
         Networking.instance.downloadFile(withUrl: collection.zipped_images_url) { url in
             
-            let url_string = url.absoluteString
-            
-            let indexStartOfText = url_string.index(url_string.startIndex, offsetBy: 40) // 3
+            let url_string = url.lastPathComponent
+
             let indexEndOfText = url_string.index(url_string.endIndex, offsetBy: -4)
-            let collectionName = url_string[indexStartOfText..<indexEndOfText]
+            let collectionName = url_string[..<indexEndOfText]
             
-            let file_ulr = try? FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("\(collectionName)/_preview.png")
+            let file_url = try? FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("\(collectionName)/_preview.png")
             
             DispatchQueue.main.async {
-                guard let image_url = file_ulr?.path else {return}
+                guard let image_url = file_url?.path else {return}
                 sender.collectionImageView.image = UIImage(contentsOfFile: image_url)
             }
             

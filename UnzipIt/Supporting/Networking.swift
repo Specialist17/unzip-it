@@ -38,24 +38,19 @@ class Networking {
     
     func downloadFile(withUrl urlString: String, completion: @escaping (URL) -> Void){
         //Create URL to the source file you want to download
-        let fileURL = URL(string: urlString)
+        let fileURL = URL(string: urlString)!
         
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
         
-        let request = URLRequest(url:fileURL!)
+        let request = URLRequest(url:fileURL)
         
         let task = session.downloadTask(with: request) { (tempLocalUrl, response, error) in
             if let tempLocalUrl = tempLocalUrl, error == nil {
                 let documentsDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
                 Zip.addCustomFileExtension("tmp")
                 try? Zip.unzipFile(tempLocalUrl, destination: documentsDirectory, overwrite: true, password: nil, progress: { (progress) in
-                    print(progress)
-                }, fileOutputHandler: { (fileUrl) in
-                    if let url = fileURL {
-                        completion(url)
-                    }
-                    
+                    completion(fileURL)
                 })
             } else {
                 print("Error took place while downloading a file. Error description: %@", error?.localizedDescription);

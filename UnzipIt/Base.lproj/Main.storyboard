@@ -100,10 +100,10 @@
             </objects>
             <point key="canvasLocation" x="421.875" y="31.690140845070424"/>
         </scene>
-        <!--View Controller-->
+        <!--Collection Images Controller-->
         <scene sceneID="sTB-d1-2Y9">
             <objects>
-                <viewController id="6nA-Ij-V2g" sceneMemberID="viewController">
+                <viewController id="6nA-Ij-V2g" customClass="CollectionImagesController" customModule="UnzipIt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kf0-MG-b2U">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
