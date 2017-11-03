@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import Alamofire
+import Zip
 
 class Networking {
     static let instance = Networking()
     
-    let baseUrlString = "https://api.myjson.com/bins/1165qr"
+    let baseUrlString = "https://api.myjson.com/bins/17i2zn"
     let session = URLSession.shared
     
     func fetch(route: String?, method: String, headers: [String: String], data: Encodable?, completion: @escaping (Data) -> Void) {
@@ -30,7 +32,60 @@ class Networking {
             }
             
             completion(data)
-            }.resume()
+        }.resume()
         
+    }
+    
+    
+    func downloadFile(withUrl urlString: String, completion: @escaping (URL) -> Void){
+        //Create URL to the source file you want to download
+        let fileURL = URL(string: urlString)
+        
+        let sessionConfig = URLSessionConfiguration.default
+        let session = URLSession(configuration: sessionConfig)
+        
+        let request = URLRequest(url:fileURL!)
+        
+        let task = session.downloadTask(with: request) { (tempLocalUrl, response, error) in
+            if let tempLocalUrl = tempLocalUrl, error == nil {
+                let documentsDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+                Zip.addCustomFileExtension("tmp")
+                try? Zip.unzipFile(tempLocalUrl, destination: documentsDirectory, overwrite: true, password: nil, progress: { (progress) -> () in
+                    print(progress)
+                }) // Unzip
+                completion(documentsDirectory)
+            } else {
+                print("Error took place while downloading a file. Error description: %@", error?.localizedDescription);
+            }
+        }
+        task.resume()
+    }
+    
+    func alamofireLoad(collection: Collection){
+        let destination: DownloadRequest.DownloadFileDestination = { _, _ in
+            let documentsURL = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)[0]
+            let fileURL = documentsURL.appendingPathComponent("Forrest/images.zip")
+            
+            return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+        }
+        
+        Alamofire.download(collection.zipped_images_url, to: destination).response { response in
+            print(response)
+            
+            if response.error == nil, let imagePath = response.destinationURL?.path {
+                //                let image = UIImage(contentsOfFile: imagePath)
+                do {
+                    
+                    let documentsDirectory = FileManager.default.urls(for:.documentDirectory, in: .userDomainMask)[0]
+                    try Zip.unzipFile(response.destinationURL!, destination: documentsDirectory, overwrite: true, password: nil, progress: { (progress) -> () in
+                        print(progress)
+                    }) // Unzip
+                    
+                }
+                catch {
+                    print("Something went wrong")
+                }
+            }
+        }
     }
 }

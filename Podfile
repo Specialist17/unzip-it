@@ -7,6 +7,7 @@ target 'UnzipIt' do
 
   # Pods for UnzipIt
 	pod 'Zip', '~> 1.0'
+	pod 'Alamofire', '~> 4.5'
   target 'UnzipItTests' do
     inherit! :search_paths
     # Pods for testing

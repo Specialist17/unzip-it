@@ -18,6 +18,7 @@
 		9011E1BC1FA94C7700E36546 /* UnzipItUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9011E1BB1FA94C7700E36546 /* UnzipItUITests.swift */; };
 		907C6C571FAA3E07005F64B2 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907C6C561FAA3E07005F64B2 /* Networking.swift */; };
 		907C6C5A1FAA3F18005F64B2 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907C6C591FAA3F18005F64B2 /* Collection.swift */; };
+		907C6C5E1FAA87DF005F64B2 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907C6C5D1FAA87DF005F64B2 /* CollectionCell.swift */; };
 		BBAFD0935F28DA2B5D654E63 /* Pods_UnzipItUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9A6274FE8774E8A05984CE1 /* Pods_UnzipItUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		9011E1BD1FA94C7700E36546 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		907C6C561FAA3E07005F64B2 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		907C6C591FAA3F18005F64B2 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		907C6C5D1FAA87DF005F64B2 /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
 		F8C19B762E7F731207A05E99 /* Pods_UnzipItTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnzipItTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9A6274FE8774E8A05984CE1 /* Pods_UnzipItUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnzipItUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -136,6 +138,7 @@
 				9011E1A21FA94C7700E36546 /* Assets.xcassets */,
 				9011E1A41FA94C7700E36546 /* LaunchScreen.storyboard */,
 				9011E1A71FA94C7700E36546 /* Info.plist */,
+				907C6C5D1FAA87DF005F64B2 /* CollectionCell.swift */,
 			);
 			path = UnzipIt;
 			sourceTree = "<group>";
@@ -462,10 +465,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-UnzipIt/Pods-UnzipIt-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Zip/Zip.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Zip.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,6 +489,7 @@
 				9011E19E1FA94C7700E36546 /* ViewController.swift in Sources */,
 				9011E19C1FA94C7700E36546 /* AppDelegate.swift in Sources */,
 				907C6C5A1FAA3F18005F64B2 /* Collection.swift in Sources */,
+				907C6C5E1FAA87DF005F64B2 /* CollectionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
