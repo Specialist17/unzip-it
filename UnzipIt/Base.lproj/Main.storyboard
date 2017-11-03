@@ -118,13 +118,40 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="l6d-NV-FGG">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionImagesCell" id="l6d-NV-FGG" customClass="CollectionViewCell" customModule="UnzipIt" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JEc-FB-bF6">
+                                                    <rect key="frame" x="5" y="5" width="110" height="110"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zad-yq-wsR" customClass="CustomImageView" customModule="UnzipIt" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
+                                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="zad-yq-wsR" secondAttribute="bottom" id="3vu-So-OPj"/>
+                                                        <constraint firstItem="zad-yq-wsR" firstAttribute="leading" secondItem="JEc-FB-bF6" secondAttribute="leading" id="6Xf-Rd-wi0"/>
+                                                        <constraint firstItem="zad-yq-wsR" firstAttribute="top" secondItem="JEc-FB-bF6" secondAttribute="top" id="9Rp-YB-cfi"/>
+                                                        <constraint firstAttribute="trailing" secondItem="zad-yq-wsR" secondAttribute="trailing" id="dfc-xx-1rm"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="JEc-FB-bF6" secondAttribute="bottom" constant="5" id="Am0-bx-AHe"/>
+                                            <constraint firstItem="JEc-FB-bF6" firstAttribute="leading" secondItem="l6d-NV-FGG" secondAttribute="leading" constant="5" id="Ox9-zx-ZbO"/>
+                                            <constraint firstAttribute="trailing" secondItem="JEc-FB-bF6" secondAttribute="trailing" constant="5" id="hOX-Yi-eFt"/>
+                                            <constraint firstItem="JEc-FB-bF6" firstAttribute="top" secondItem="l6d-NV-FGG" secondAttribute="top" constant="5" id="wHT-Ic-5iW"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="collectionImageView" destination="zad-yq-wsR" id="2ld-sB-vD2"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -142,6 +169,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZfE-Rm-hPL"/>
                     </view>
+                    <connections>
+                        <outlet property="imagesCollection" destination="eTs-Ew-v9e" id="sAH-OU-PZE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6TX-Ki-KNC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

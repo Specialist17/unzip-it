@@ -13,7 +13,7 @@ import Zip
 class Networking {
     static let instance = Networking()
     
-    let baseUrlString = "https://api.myjson.com/bins/17i2zn"
+    let baseUrlString = "https://api.myjson.com/bins/17ge17"
     let session = URLSession.shared
     
     func fetch(route: String?, method: String, headers: [String: String], data: Encodable?, completion: @escaping (Data) -> Void) {
@@ -29,7 +29,6 @@ class Networking {
             guard let data = data else {
                 return
             }
-            
             completion(data)
         }.resume()
         
@@ -71,9 +70,7 @@ class Networking {
             print(response)
             
             if response.error == nil, let imagePath = response.destinationURL?.path {
-                //                let image = UIImage(contentsOfFile: imagePath)
                 do {
-                    
                     let documentsDirectory = FileManager.default.urls(for:.documentDirectory, in: .userDomainMask)[0]
                     try Zip.unzipFile(response.destinationURL!, destination: documentsDirectory, overwrite: true, password: nil, progress: { (progress) -> () in
                         print(progress)

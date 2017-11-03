@@ -42,6 +42,16 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "collectionImagesSegue" {
+            if let destinationVC = segue.destination as? CollectionImagesController{
+                if let collection = sender as? Collection {
+                    destinationVC.collection = collection
+                }
+            }
+        }
+    }
 
 }
 
@@ -63,6 +73,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return collections.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let collection = collections[indexPath.row]
+        
+        performSegue(withIdentifier: "collectionImagesSegue", sender: collection)
     }
 }
 

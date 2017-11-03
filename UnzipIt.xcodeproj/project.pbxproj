@@ -11,6 +11,7 @@
 		713DA630745B48737EB4F17B /* Pods_UnzipItTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8C19B762E7F731207A05E99 /* Pods_UnzipItTests.framework */; };
 		9005B5CF1FAC119F00173256 /* UIImage+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9005B5CE1FAC119F00173256 /* UIImage+Request.swift */; };
 		9005B5D31FAC209000173256 /* CollectionImagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9005B5D21FAC209000173256 /* CollectionImagesController.swift */; };
+		9005B5D51FACF06C00173256 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9005B5D41FACF06C00173256 /* CollectionViewCell.swift */; };
 		9011E19C1FA94C7700E36546 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9011E19B1FA94C7700E36546 /* AppDelegate.swift */; };
 		9011E19E1FA94C7700E36546 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9011E19D1FA94C7700E36546 /* ViewController.swift */; };
 		9011E1A11FA94C7700E36546 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9011E19F1FA94C7700E36546 /* Main.storyboard */; };
@@ -51,6 +52,7 @@
 		8D95202F4DFA2E48649EEDCA /* Pods-UnzipIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnzipIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UnzipIt/Pods-UnzipIt.debug.xcconfig"; sourceTree = "<group>"; };
 		9005B5CE1FAC119F00173256 /* UIImage+Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Request.swift"; sourceTree = "<group>"; };
 		9005B5D21FAC209000173256 /* CollectionImagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionImagesController.swift; sourceTree = "<group>"; };
+		9005B5D41FACF06C00173256 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		9011E1981FA94C7700E36546 /* UnzipIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnzipIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9011E19B1FA94C7700E36546 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9011E19D1FA94C7700E36546 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				9005B5CE1FAC119F00173256 /* UIImage+Request.swift */,
 				907C6C5D1FAA87DF005F64B2 /* CollectionCell.swift */,
+				9005B5D41FACF06C00173256 /* CollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 			files = (
 				907C6C571FAA3E07005F64B2 /* Networking.swift in Sources */,
 				9011E19E1FA94C7700E36546 /* ViewController.swift in Sources */,
+				9005B5D51FACF06C00173256 /* CollectionViewCell.swift in Sources */,
 				9011E19C1FA94C7700E36546 /* AppDelegate.swift in Sources */,
 				9005B5CF1FAC119F00173256 /* UIImage+Request.swift in Sources */,
 				907C6C5A1FAA3F18005F64B2 /* Collection.swift in Sources */,
