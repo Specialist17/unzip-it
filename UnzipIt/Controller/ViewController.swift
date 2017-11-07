@@ -88,12 +88,13 @@ extension ViewController: CollectionCellDelegate {
     func loadImages(_ collection: Collection, _ sender: CollectionCell) {
         Networking.instance.downloadFile(withUrl: collection.zipped_images_url) { (url, progress) in
             
-            let url_string = url.lastPathComponent
+            let url_string = url.lastPathComponent.split(separator: ".")
+            let my_string = url_string[0].replacingOccurrences(of: "+", with: " ")
 
-            let indexEndOfText = url_string.index(url_string.endIndex, offsetBy: -4)
-            let collectionName = url_string[..<indexEndOfText]
+//            let indexEndOfText = url_string.index(url_string.endIndex, offsetBy: -4)
+//            let collectionName = url_string[..<indexEndOfText]
             
-            let file_url = try? FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("\(collectionName)/_preview.png")
+            let file_url = try? FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("\(my_string)/_preview.png")
             
             DispatchQueue.main.async {
                 guard let image_url = file_url?.path else {return}

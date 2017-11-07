@@ -22,17 +22,15 @@ class CollectionImagesController: UIViewController {
         let collection_string = collection.zipped_images_url
         let url = URL(string: collection_string)!
         
-        let url_string = url.lastPathComponent
-        
-        let indexEndOfText = url_string.index(url_string.endIndex, offsetBy: -4)
-        let collectionName = url_string[..<indexEndOfText]
+        let url_string = url.lastPathComponent.split(separator: ".")
+        let my_string = url_string[0].replacingOccurrences(of: "+", with: " ")
         
         let fm = FileManager.default
-        let file_url = try? fm.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("\(collectionName)")
+        let file_url = try? fm.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("\(my_string)")
         
         let contents = try? fm.contentsOfDirectory(at: file_url!, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
         if let contents = contents {
-            imageNames = contents.filter({ $0.absoluteString.contains(".jpg") || $0.absoluteString.contains(".jpeg")})
+            imageNames = contents.filter({ $0.pathExtension == "jpg" || $0.pathExtension == "jpeg"})
         }
 
     }

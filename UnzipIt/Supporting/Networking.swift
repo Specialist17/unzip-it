@@ -13,7 +13,7 @@ import Zip
 class Networking {
     static let instance = Networking()
     
-    let baseUrlString = "https://api.myjson.com/bins/17ge17"
+    let baseUrlString = "https://s3-us-west-2.amazonaws.com/mob3/image_collection.json"
     let session = URLSession.shared
     
     func fetch(route: String?, method: String, headers: [String: String], data: Encodable?, completion: @escaping (Data) -> Void) {

@@ -52,8 +52,9 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Fernando Arocho** - *Initial work* -
 [![Fernando Arocho](https://avatars3.githubusercontent.com/u/6998363?v=3&s=200)](https://github.com/Specialist17)
+---
+Fernando Arocho
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
