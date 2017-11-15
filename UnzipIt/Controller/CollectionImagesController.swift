@@ -13,6 +13,7 @@ class CollectionImagesController: UIViewController {
     @IBOutlet weak var imagesCollection: UICollectionView!
     var imageNames = [URL]()
     var collection: Collection!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,15 +24,15 @@ class CollectionImagesController: UIViewController {
         let url = URL(string: collection_string)!
         
         let url_string = url.lastPathComponent.split(separator: ".")
-        let my_string = url_string[0].replacingOccurrences(of: "+", with: " ")
+//        let my_string = url_string[0].replacingOccurrences(of: "+", with: " ")
         
         let fm = FileManager.default
-        let file_url = try? fm.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("\(my_string)")
+        guard let file_url = try? fm.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("\(url_string)"),
+            let contents = try? fm.contentsOfDirectory(at: file_url, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+            else {return}
         
-        let contents = try? fm.contentsOfDirectory(at: file_url!, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-        if let contents = contents {
-            imageNames = contents.filter({ $0.pathExtension == "jpg" || $0.pathExtension == "jpeg"})
-        }
+        imageNames = contents.filter({ $0.pathExtension == "jpg" || $0.pathExtension == "jpeg"})
+        
 
     }
 

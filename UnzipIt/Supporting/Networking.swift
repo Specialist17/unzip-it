@@ -13,6 +13,8 @@ import Zip
 class Networking {
     static let instance = Networking()
     
+    //tamo xoticos
+    
     let baseUrlString = "https://s3-us-west-2.amazonaws.com/mob3/image_collection.json"
     let session = URLSession.shared
     
@@ -31,9 +33,8 @@ class Networking {
             }
             completion(data)
         }.resume()
-        
+
     }
-    
     
     func downloadFile(withUrl urlString: String, completion: @escaping (URL, Double) -> Void){
         //Create URL to the source file you want to download
