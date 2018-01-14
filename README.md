@@ -18,20 +18,6 @@ $ pod init
 $ pod install
 ```
 
-### Installing
-
-
-
-## Running the tests
-
-
-### Break down into end to end tests
-
-
-### And coding style tests
-
-
-
 ## Deployment
 
 Run the app on your iOS device
@@ -41,14 +27,6 @@ Run the app on your iOS device
 * [Swift](https://developer.apple.com/swift/) - The web framework used
 * [Cocoapods](https://cocoapods.org/) - Dependency Management
 * [Zip](https://github.com/marmelroy/Zip) - Used to unzip the file
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Authors
 
@@ -64,5 +42,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* [AlamoFire](https://github.com/Alamofire/Alamofire)
-* Inspiration
+* For web requests: [AlamoFire](https://github.com/Alamofire/Alamofire)
+* For zipping and unzipping files: [Zip](https://github.com/marmelroy/Zip)
+* This was made as a class project
